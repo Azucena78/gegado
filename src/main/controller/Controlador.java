@@ -17,10 +17,11 @@ public class Controlador extends HttpServlet {
  /*       Usuario u = new Usuario("Azucena", "123456");
         UsuarioDAO a = new UsuarioDAO();
      //   boolean msn = a.create(u);
-
         boolean msn = a.update(u);
         System.out.println(msn);
 */
+
+
 
     }
 

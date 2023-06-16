@@ -11,6 +11,6 @@
     <title>Gestion</title>
 </head>
 <body>
-
+<a href="ConCat">Crear Categorias</a>
 </body>
 </html>

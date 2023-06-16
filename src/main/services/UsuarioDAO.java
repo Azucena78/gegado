@@ -9,14 +9,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 public class UsuarioDAO extends Conexion {
-
-
     String sql;
 
     public boolean create(Usuario u) {
-        Connection con = conectar();
-
         sql = "INSERT INTO usuario (userN, passU) VALUES (?,?);";
+        Connection con = conectar();
         try {
             PreparedStatement pt = con.prepareStatement(sql);
             pt.setString(1, u.getUserN());
@@ -32,7 +29,6 @@ public class UsuarioDAO extends Conexion {
     }
 
     public boolean read(Usuario u) {
-
         sql = "SELECT * FROM usuario WHERE userN=? and passU=?;";
         Connection con = conectar();
         try {

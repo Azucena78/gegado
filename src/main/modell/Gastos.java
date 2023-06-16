@@ -1,32 +1,37 @@
 package modell;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class Gastos {
     private int idG;
     private LocalDate fechaG;
     private int idC;
-    private double ImporteG;
+    private double importeG;
     private String detallesG;
     private int idUsuario;
 
-    public Gastos() {
+    public Gastos(int idC, String fechaG,String detalleG, double importeG, int idU) {
     }
 
-    public Gastos(int idG, LocalDate fechaG, int idC, double importeG, String detallesG, int idUsuario) {
+    public Gastos(int idG, String fechaG, int idC, double importeG, String detallesG, int idUsuario) {
         this.idG = idG;
-        this.fechaG = fechaG;
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.fechaG = LocalDate.parse(fechaG, formato);
         this.idC = idC;
-        ImporteG = importeG;
+        this.importeG = importeG;
         this.detallesG = detallesG;
+        this.idUsuario = idUsuario;
     }
 
-    public Gastos(LocalDate fechaG, int idC, double importeG, String detallesG) {
-        this.fechaG = fechaG;
+    public Gastos(String fechaG, int idC, double importeG, String detallesG, int idUsuario) {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.fechaG = LocalDate.parse(fechaG, formato);
         this.idC = idC;
-        ImporteG = importeG;
+        this.importeG = importeG;
         this.detallesG = detallesG;
+        this.idUsuario = idUsuario;
     }
 
     public int getIdG() {
@@ -53,12 +58,12 @@ public class Gastos {
         this.idC = idC;
     }
 
-    public double getImporteG() {
-        return ImporteG;
+    public Double getImporteG() {
+        return importeG;
     }
 
     public void setImporteG(double importeG) {
-        ImporteG = importeG;
+        this.importeG = importeG;
     }
 
     public String getDetallesG() {
@@ -83,7 +88,7 @@ public class Gastos {
                 "idG=" + idG +
                 ", fechaG=" + fechaG +
                 ", idC=" + idC +
-                ", ImporteG=" + ImporteG +
+                ", ImporteG=" + importeG +
                 ", detallesG='" + detallesG + '\'' +
                 ", idUsuario=" + idUsuario +
                 '}';
