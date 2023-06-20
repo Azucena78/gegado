@@ -14,7 +14,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <div class="container container-sm my-4">
 
-    <form action="Controlador" class="row g-3 needs-validation" novalidate method="post">
+    <form action="controlador" class="row g-3 needs-validation" novalidate method="post">
         <fieldset>
             <div class="row">
                 <div class="col-sm-12 col-xl-3 mb-3 m-auto">

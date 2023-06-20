@@ -1,5 +1,6 @@
 body{
-    background-image:linear-gradient(to right,lightslategray,white);
+  /*  background:linear-gradient(to right,lightslategray,white);*/
+    background: linear-gradient(135deg, orange 60%, cyan);
     background-repeat: no-repeat;
     background-size:cover;
     height: 100vh;

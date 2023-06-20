@@ -18,6 +18,7 @@
     <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="container container-sm">
     <form class="row g-3 needs-validation" novalidate>
         <fieldset>
@@ -51,11 +52,11 @@
                     </div>
 
                 <div class="row">
-                    <div class="col-sm-12 col-xl-3">
-                        <button type="submit" class="btn btn-primary" href="actualizacion.jsp">Registrar</button>
+                    <div class="col-sm-6 col-xl-3">
+                        <button type="submit" class="btn btn-dark" href="actualizacion.jsp">Registrar</button>
                     </div>
-                    <div class="col-sm-12 col-xl-3">
-                        <a type="button" class="btn btn-primary" href="index.jsp">Cancelar</a>
+                    <div class="col-sm-6 col-xl-3">
+                        <a type="button" class="btn btn-dark" href="index.jsp">Cancelar</a>
                     </div>
                 </div>
         </fieldset>
