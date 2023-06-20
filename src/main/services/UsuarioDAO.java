@@ -96,4 +96,33 @@ public class UsuarioDAO extends Conexion {
         }
     }
 
+
+    public Usuario readUsuarioSesion(Usuario u) {
+        sql = "SELECT * FROM usuario WHERE userN=? and passU=?;";
+        Connection con = conectar();
+        Usuario user=null;
+        try {
+            PreparedStatement pt = con.prepareStatement(sql);
+            pt.setString(1, u.getUserN());
+            pt.setString(2, u.getPassU());
+            ResultSet rs = pt.executeQuery();
+            if(rs.next()){
+                int idU=rs.getInt("idU");
+                String userN=u.getUserN();
+                String passU=u.getPassU();
+                user=new Usuario(userN,passU,idU);
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return user;
+    }
+
 }

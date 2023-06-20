@@ -20,6 +20,7 @@ public class Controlador extends HttpServlet {
     GastosDAO gastosDAO = new GastosDAO();
     CategoriasDAO catDao = new CategoriasDAO();
     String msnExito, msnError;
+    int usuarioSesion;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,12 +28,11 @@ public class Controlador extends HttpServlet {
             String detalles = request.getParameter("detallesG");
             String fechaHora = request.getParameter("fechaHora");
             double importe = Double.parseDouble(request.getParameter("importe"));
-            int idU = Integer.parseInt(request.getParameter("idU"));
+            int idU = usuarioSesion;
             Gastos g = new Gastos(idC,fechaHora,detalles,importe,idU);
-            gastosDAO.create(g);
-            boolean resultado = gastosDAO.read(g);
-
+            boolean resultado = gastosDAO.create(g);
             if (resultado) {
+
                 request.getRequestDispatcher("gestion.jsp").forward(request, response);
             } else {
                 msnError = "Error en la gestión";
@@ -50,8 +50,11 @@ public class Controlador extends HttpServlet {
           Usuario u = new Usuario(user, pass);
           boolean resultado = userDao.read(u);
               if (resultado) {
-                  request.getSession().setAttribute("usuario",u.getIdU());
-                  request.getRequestDispatcher("gestion.jsp").forward(request, response);
+                  Usuario usuarioS= new Usuario();
+                  usuarioS=userDao.readUsuarioSesion(u);
+                  usuarioSesion=usuarioS.getIdU();
+                  balance(request,response);
+
               }else {
 
                   msnError = "Error de Usuario o Contraseña";
@@ -60,4 +63,35 @@ public class Controlador extends HttpServlet {
               }
 
     }
+
+    protected void balance(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        ArrayList<Gastos> gastos=gastosDAO.readAllTipo(1);
+        ArrayList<Gastos> ingresos=gastosDAO.readAllTipo(2);
+        System.out.println(gastos.toString());
+        double gastosTotal=0,ingresoTotal=0;
+        for(Gastos g:gastos){
+            gastosTotal+=g.getImporteG();
+
+        }
+        for(Gastos g:ingresos){
+            ingresoTotal+=g.getImporteG();
+        }
+        if (gastosTotal>ingresoTotal){
+            request.setAttribute("mayor",gastosTotal);
+            request.setAttribute("menor",ingresoTotal);
+        }else{
+
+            request.setAttribute("mayor",ingresoTotal);
+            request.setAttribute("menor",gastosTotal);
+        }
+        System.out.println(ingresoTotal);
+        request.setAttribute("ingresoTotal",ingresoTotal);
+        request.setAttribute("gastosTotal",gastosTotal);
+        request.setAttribute("gastos",gastos);
+        request.setAttribute("ingresos",ingresos);
+        request.getRequestDispatcher("balance.jsp").forward(request,response);
+
+    }
+
 }

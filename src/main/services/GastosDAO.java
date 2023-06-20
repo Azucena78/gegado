@@ -34,13 +34,11 @@ public class GastosDAO extends Conexion {
     }
         public boolean read (Gastos a){
             Connection con = conectar();
-            sql = "SELECT * FROM gastos WHERE idC=? and detallesG=? importe=?, idU=?;";
+            sql = "SELECT * FROM gastos WHERE idC=? and detallesG=?;";
             try {
                 PreparedStatement pt = con.prepareStatement(sql);
                 pt.setInt(1, a.getIdC());
                 pt.setString(2, a.getDetallesG());
-                pt.setDouble(3, a.getImporteG());
-                pt.setInt(4, a.getIdUsuario());
                 ResultSet rs = pt.executeQuery();
                 return rs.next();
 
@@ -85,10 +83,8 @@ public class GastosDAO extends Conexion {
             return listGas;
         }
     public ArrayList readAllTipo (int TipoTransaccion) {
-
         Connection con = conectar();
         ArrayList<Gastos> listGas=new ArrayList<>();
-
         sql = "select gastos.*,c.nombreC,c.idT from gastos inner join categorias c on gastos.idC = c.idC;";
         try {
             PreparedStatement pt = con.prepareStatement(sql);

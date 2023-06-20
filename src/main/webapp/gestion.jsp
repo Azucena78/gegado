@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-sm-6 m-auto text-center col-xl-3 mb-3 m-auto">
     <input type="hidden" name="opcion" value="crearGasto">
-            <legend class="text-light">GESTION</legend>
+            <legend class="text-light">Gestión</legend>
                 </div>
             </div>
             <div class="row mb-1" >
@@ -63,12 +63,12 @@
                     <input type="text" class="form-control" id="idC" name="idC" required>
                 </div>
             </div>
-            <div class="row" >
-                <div class="col-sm-12 col-xl-3 mb-3 m-auto">
-                    <label for="idU" class="form-label text-light">Usuario</label>
-                    <input type="text" class="form-control" id="idU" name="idU" required>
-                </div>
-            </div>
+<%--            <div class="row" >--%>
+<%--                <div class="col-sm-12 col-xl-3 mb-3 m-auto">--%>
+<%--                    <label for="idU" class="form-label text-light">Usuario</label>--%>
+<%--                    <input type="text" class="form-control" id="idU" name="idU" required>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
             <div class="row mb-1" >
                 <div class="p-2 col-6 m-auto text-center col-sm-12 m-auto" >
