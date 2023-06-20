@@ -11,15 +11,18 @@
     <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container container-sm">
-    <h2 class="text-light">GEGADO</h2>
+<jsp:include page="header.jsp"></jsp:include>
+<div class="container container-sm my-4">
+
     <form action="Controlador" class="row g-3 needs-validation" novalidate method="post">
         <fieldset>
-
-            <legend class="text-light">Datos Personales</legend>
-
             <div class="row">
-                <div class="col-sm-12 col-xl-3 mb-3">
+                <div class="col-sm-12 col-xl-3 mb-3 m-auto">
+            <legend class="text-light">Datos Personales</legend>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xl-3 mb-3 m-auto">
                     <label for="userN"class="form-label text-light">Nombre Usuario</label>
                     <input type="text" class="form-control" id="userN" name="userN" required maxlength="50" autocomplete autofocus placeholder="Indica tu nombre">
                     <div id="nombreU" class="form-text"></div>
@@ -27,7 +30,7 @@
                 </div>
 
             <div class="row" >
-                <div class="col-sm-12 col-xl-3 mb-3">
+                <div class="col-sm-12 col-xl-3 mb-3 m-auto">
                     <label for="passU" class="form-label text-light">Password</label>
                     <input type="password" class="form-control" id="passU" name="passU" required>
                     </div>
@@ -36,12 +39,10 @@
         </fieldset>
 
         <div class="row mb-1">
-            <div class="p-2 col-2">
-                <button type="submit" class="btn btn-primary " >Enviar</button></div>
-            <div class="p-2 col-2">
-                <a href="registro.jsp" class="btn btn-primary" type="button">Registrar</a></div>
-            <div class="p-2 col-2">
-                <a href="actualizacion.jsp" class="btn btn-primary" type="button">Olvidé contraseña</a>
+            <div class="p-2 col-6 m-auto text-center col-sm-12">
+                <button type="submit" class="btn btn-dark mx-4" >Enviar</button>
+                <a href="registro.jsp" class="btn btn-dark mx-4" type="button">Registrar</a>
+                <a href="actualizacion.jsp" class="btn btn-dark mx-4" type="button">Olvidé contraseña</a>
             </div>
         </div>
 
